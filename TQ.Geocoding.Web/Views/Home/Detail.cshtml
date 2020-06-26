@@ -1,0 +1,224 @@
+﻿@model TQ.Geocoding.Dto.Dtos.FullAddressDto
+
+@{
+    ViewData["Title"] = "Detail";
+}
+
+    <div class="container">
+        <h1>Detail</h1>
+        <div class="row">
+            <div class="col-6" id="detailsArea">
+                <h4>Full Address Object</h4>
+                <table class="table table-striped table-bordered table-sm">
+                    <thead>
+                        <tr>
+                            <th>Field</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>UPRN</th>
+                            <td>@Model.Uprn</td>
+                        </tr>
+                        <tr>
+                            <th>Latitude</th>
+                            <td id="latitude">@Model.Latitude</td>
+                        </tr>
+                        <tr>
+                            <th>Longitude</th>
+                            <td id="longitude">@Model.Longitude</td>
+                        </tr>
+                        <tr>
+                            <th>Easting</th>
+                            <td>@Model.XCoordinateEasting</td>
+                        </tr>
+                        <tr>
+                            <th>Northing</th>
+                            <td>@Model.YCoordinateNorthing</td>
+                        </tr>
+                        <tr>
+                            <th>Organisation Name</th>
+                            <td>@Model.OrganisationName</td>
+                        </tr>
+                        <tr>
+                            <th>Department Name</th>
+                            <td>@Model.DepartmentName</td>
+                        </tr>
+                        <tr>
+                            <th>Sub-Building Name</th>
+                            <td>@Model.SubBuildingName</td>
+                        </tr>
+                        <tr>
+                            <th>Building Name</th>
+                            <td>@Model.BuildingName</td>
+                        </tr>
+                        <tr>
+                            <th>Building Number</th>
+                            <td>@Model.BuildingNumber</td>
+                        </tr>
+                        <tr>
+                            <th>PO Box Number</th>
+                            <td>@Model.PoBoxNumber</td>
+                        </tr>
+                        <tr>
+                            <th>Dependent Thoroughfare</th>
+                            <td>@Model.DependentThoroughfare</td>
+                        </tr>
+                        <tr>
+                            <th>Thoroughfare</th>
+                            <td>@Model.Thoroughfare</td>
+                        </tr>
+                        <tr>
+                            <th>Double Dependent Locality</th>
+                            <td>@Model.DoubleDependentLocality</td>
+                        </tr>
+                        <tr>
+                            <th>Dependent Locality</th>
+                            <td>@Model.DependentLocality</td>
+                        </tr>
+                        <tr>
+                            <th>Post Town</th>
+                            <td>@Model.PostTown</td>
+                        </tr>
+                        <tr>
+                            <th>Postcode</th>
+                            <td>@Model.Postcode</td>
+                        </tr>
+                    <tr>
+                            <th>Welsh Dependent Thoroughfare</th>
+                            <td>@Model.WelshDependentThoroughfare</td>
+                        </tr>
+                        <tr>
+                            <th>Welsh Thoroughfare</th>
+                            <td>@Model.WelshThoroughfare</td>
+                        </tr>
+                        <tr>
+                            <th>Welsh Double Dependent Locality</th>
+                            <td>@Model.WelshDoubleDependentLocality</td>
+                        </tr>
+                        <tr>
+                            <th>Welsh Dependent Locality</th>
+                            <td>@Model.WelshDependentLocality</td>
+                        </tr>
+                        <tr>
+                            <th>Welsh Post Town</th>
+                            <td>@Model.WelshPostTown</td>
+                        </tr>
+                    <tr>
+                            <th>Address Line 1</th>
+                            <td>@Model.AddressLine1</td>
+                        </tr>
+                        <tr>
+                            <th>Address Line 2</th>
+                            <td>@Model.AddressLine2</td>
+                        </tr>
+                        <tr>
+                            <th>Address Line 3</th>
+                            <td>@Model.AddressLine3</td>
+                        </tr>
+                        <tr>
+                            <th>Welsh Address Line 1</th>
+                            <td>@Model.WelshAddressLine1</td>
+                        </tr>
+                        <tr>
+                            <th>Welsh Address Line 2</th>
+                            <td>@Model.WelshAddressLine2</td>
+                        </tr>
+                        <tr>
+                            <th>Welsh Address Line 3</th>
+                            <td>@Model.WelshAddressLine3</td>
+                        </tr>
+                        <tr>
+                            <th>Single Line Address</th>
+                            <td>@Model.SingleLineAddress</td>
+                        </tr>
+                        <tr>
+                            <th>Welsh Single Line Address</th>
+                            <td>@Model.WelshSingleLineAddress</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+            </div>
+
+
+            <div class="col-6" id="mapArea">
+                <div class="row">
+                    <h4>Maps</h4>
+                </div>
+                <div class="row">
+                    <div id="map" class="map"></div>
+                </div>
+                <div class="row" style="margin-top:16px;">
+                    <div id="map2" class="map"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+@section Scripts {
+
+
+    <link rel="stylesheet" href="https://openlayers.org/en/v5.3.0/css/ol.css" type="text/css">
+    <script src="https://www.openlayers.org/api/OpenLayers.js"></script>
+
+    <style>
+        .map {
+            height:400px;
+            width: 100%;
+        }
+    </style>
+
+
+    <script type="text/javascript">
+
+        var propertyLatitude = parseFloat($('#latitude').text());
+        var propertyLongitude = parseFloat($('#longitude').text());
+
+        map = new OpenLayers.Map("map");
+        map.addLayer(new OpenLayers.Layer.OSM());
+
+        var lonLat = new OpenLayers.LonLat( propertyLongitude , propertyLatitude )
+              .transform(
+                new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+                map.getProjectionObject() // to Spherical Mercator Projection
+              );
+          
+        var zoom=17;
+
+        var markers = new OpenLayers.Layer.Markers( "Markers" );
+        map.addLayer(markers);
+    
+        markers.addMarker(new OpenLayers.Marker(lonLat));
+    
+        map.setCenter(lonLat, zoom);
+
+        ///////////////////////////////////////////////////////////////
+
+        map2 = new OpenLayers.Map("map2");
+        map2.addLayer(new OpenLayers.Layer.OSM());
+
+        var lonLat2 = new OpenLayers.LonLat( propertyLongitude , propertyLatitude )
+              .transform(
+                new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+                map2.getProjectionObject() // to Spherical Mercator Projection
+              );
+          
+        var zoom2=14;
+
+        var markers2 = new OpenLayers.Layer.Markers( "Markers" );
+        map2.addLayer(markers2);
+    
+        markers2.addMarker(new OpenLayers.Marker(lonLat2));
+    
+        map2.setCenter (lonLat2, zoom2);
+
+
+    </script>
+
+
+}

@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>TQ.Geocoding.Repository</RootNamespace>
+    <AssemblyName>TQ.Geocoding.Repository</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="AddressReadOnlyRepository.cs" />
+    <Compile Remove="ClosestCoordinates.cs" />
+    <Compile Remove="Coordinates.cs" />
+    <Compile Remove="DataUtils.cs" />
+    <Compile Remove="IAddressReadOnlyRepository.cs" />
+    <Compile Remove="ILocationReadOnlyRepository.cs" />
+    <Compile Remove="IReadOnlyRepository.cs" />
+    <Compile Remove="LocationReadOnlyRepository.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.0" />
+    <PackageReference Include="Npgsql" Version="4.0.8" />
+    <PackageReference Include="Serilog.Extensions.Logging" Version="2.0.4" />
+    <PackageReference Include="TQ.Geocoding.Data" Version="1.2.0" />
+    <PackageReference Include="TQ.Geocoding.Models" Version="1.6.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions">
+      <HintPath>..\..\..\..\..\.nuget\packages\microsoft.extensions.logging.abstractions\2.2.0\lib\netstandard2.0\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

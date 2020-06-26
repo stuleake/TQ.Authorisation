@@ -1,0 +1,110 @@
+﻿
+<div class="container">
+    <div class="row" id="pageHeader">
+        <h1 class="display-4">Counts</h1>
+    </div>
+
+    <div class="row">
+
+        <div class="col-12 card-group">
+            <div class="card" id="postcodeLookupArea">
+                <div class="card-header"><h2>Postcode Lookup</h2></div>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Enter part of a postcode to search</h5>
+                    <p class="card-text">Click 'search' when ready.</p>
+                    <div class="form-group" id="postcodeSearchInputFormGroup">
+                        <label for="postcodeSearchInput">Full or Part postcode</label>
+                        <input type="text" class="form-control" id="postcodeSearchInput" placeholder="e.g. 'BS10 6LH', 'BS1', or 'BS1 ' (space to avoid BS10, etc.)">
+                    </div>
+                    <div class="form-group" id="postcodeSearchAdditionalTextInputFormGroup">
+                        <label for="postcodeSearchAdditionalTextInput">Search text</label>
+                        <input type="text" class="form-control" id="postcodeSearchAdditionalTextInput" placeholder="e.g. 'The Lodge', '142', or 'LH'">
+                    </div>
+                    <div class="mt-auto">
+                        <a href="#" class="btn btn-primary" style="margin-top:16px;" id="submitPostcodeSearch">Get Count</a>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div id="postcodeCountResult">Count:</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+@section Scripts {
+
+    <script id="documentReady">
+    $(document).ready(function () {
+
+        // Enter keypress to submit from Postcode input
+        $("#postcodeSearchInput").keyup(function (event) {
+            clearResults();
+
+            if (event.keyCode === 13) {
+                $("#submitPostcodeSearch").click();
+            }
+        });
+
+        // Enter keypress to submit from Postcode search text input
+        $("#postcodeSearchAdditionalTextInput").keyup(function(event) {
+            clearResults();
+
+            if (event.keyCode === 13) {
+                $("#submitPostcodeSearch").click();
+            }
+        });
+
+
+        // Postcode submit
+        $("#submitPostcodeSearch").on("click", function () {
+
+            clearResults();
+
+            // arrange
+            var postcodeString = $("#postcodeSearchInput").val();
+            var searchString = $("#postcodeSearchAdditionalTextInput").val();
+            var url = "PostcodeCount/" + postcodeString + "?searchString=" + searchString;
+
+            // ajax
+            $.ajax({
+                type: "GET",
+                url: url,
+                contentType: "application/json",
+                dataType: "json",
+                success: function (data) {
+
+                    var countResultDiv = '<div id="postcodeCountResult">Count: ';
+                    countResultDiv += data;
+                    countResultDiv += '</div>';
+
+                    $("#postcodeCountResult").replaceWith(countResultDiv);
+
+                },
+                failure: function (data) {
+                    alert(data.responseText);
+                },
+                error: function (data) {
+                    alert(data.responseText);
+                }
+            });
+        });
+    });
+    </script>
+
+
+    <script id="clearResults">
+
+    function clearResults() {
+        var countResultDiv = '<div id="postcodeCountResult">Count: ';
+        countResultDiv += '</div>';
+        $("#postcodeCountResult").replaceWith(countResultDiv);
+    }
+
+    </script>
+
+}

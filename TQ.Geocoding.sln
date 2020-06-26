@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29201.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TQ.Geocoding.API", "TQ.Geocoding.API\TQ.Geocoding.API.csproj", "{3650CE44-7380-48A3-B9D9-732A725A9E4A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TQ.Geocoding.API.Test", "TQ.Geocoding.API.Test\TQ.Geocoding.API.Test.csproj", "{49704F28-A64C-499D-8064-E64F57F2976E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TQ.Geocoding.Service", "TQ.Geocoding.Service\TQ.Geocoding.Service.csproj", "{8E9C8D28-F466-454F-ABA4-5126496CBDFD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TQ.Geocoding.Service.Interface", "TQ.Geocoding.Service.Interface\TQ.Geocoding.Service.Interface.csproj", "{8D9424EB-2392-4250-965F-A7B82BC9956D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3650CE44-7380-48A3-B9D9-732A725A9E4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3650CE44-7380-48A3-B9D9-732A725A9E4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3650CE44-7380-48A3-B9D9-732A725A9E4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3650CE44-7380-48A3-B9D9-732A725A9E4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49704F28-A64C-499D-8064-E64F57F2976E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49704F28-A64C-499D-8064-E64F57F2976E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49704F28-A64C-499D-8064-E64F57F2976E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49704F28-A64C-499D-8064-E64F57F2976E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E9C8D28-F466-454F-ABA4-5126496CBDFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E9C8D28-F466-454F-ABA4-5126496CBDFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E9C8D28-F466-454F-ABA4-5126496CBDFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E9C8D28-F466-454F-ABA4-5126496CBDFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D9424EB-2392-4250-965F-A7B82BC9956D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D9424EB-2392-4250-965F-A7B82BC9956D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D9424EB-2392-4250-965F-A7B82BC9956D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D9424EB-2392-4250-965F-A7B82BC9956D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {69FC566C-0D9A-46E4-B23E-196E7A04EAB5}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,509 @@
+﻿<div class="container-fluid">
+    <div class="row no-gutters" id="inputArea" style="margin-left: -150px; margin-right:-150px">
+
+        <div class="col-12 card-group">
+            <div class="card" id="freeTextLookupArea" style="width:100%;">
+                <div class="card-header"><h2>Free Text Lookup</h2></div>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Enter part of an address or postcode to search</h5>
+                    <div class="form-group" id="freeTextSearchInputFormGroup">
+                        <label for="freeTextSearchInput">Search text</label>
+                        <input type="text" class="form-control" id="freeTextSearchInput" placeholder="e.g. 'BS10 6LH' or 'The Lodge Charlton Mead'">
+                    </div>
+
+                    <div id="freeTextPreferWelshCheckboxFormGroup">
+                        <input type="checkbox" id="freeTextPreferWelshCheckbox" style="margin-top:10px;">
+                        <label for="freeTextPreferWelshCheckbox">Prefer Welsh</label>
+                    </div>
+                    <br />
+                    <label>Address Type</label>
+                    <div id="freeTextDtoRadioFormGroup">
+                        <input type="radio" name="freeTextDtoType" value="full">
+                        <label>Full</label>
+                        <input type="radio" name="freeTextDtoType" value="simple" checked>
+                        <label>Simple</label>
+                    </div>
+                    <div class="mt-auto">
+                        <a href="#" class="btn btn-primary" style="margin-top:32px;" id="submitFreeTextSearch">Search</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" id="postcodeLookupArea">
+                <div class="card-header"><h2>Postcode Lookup</h2></div>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Enter part of a postcode to search</h5>
+                    <div class="form-group" id="postcodeSearchInputFormGroup">
+                        <label for="postcodeSearchInput">Full or Part postcode</label>
+                        <input type="text" class="form-control" id="postcodeSearchInput" placeholder="e.g. 'BS10 6LH', 'BS1', or 'BS1 ' (space to avoid BS10, etc.)">
+                    </div>
+                    <div id="postcodePreferWelshCheckboxFormGroup">
+                        <input type="checkbox" id="postcodePreferWelshCheckbox" style="margin-top:10px;">
+                        <label class="form-check-label" for="postcodePreferWelshCheckbox">Prefer Welsh</label>
+                    </div>
+                    <br />
+                    <label>Address Type</label>
+                    <div id="postcodeDtoRadioFormGroup">
+                        <input type="radio" name="postcodeDtoType" value="full">
+                        <label>Full</label>
+                        <input type="radio" name="postcodeDtoType" value="simple" checked>
+                        <label>Simple</label>
+                    </div>
+                    <div class="mt-auto">
+                        <a href="#" class="btn btn-primary" style="margin-top:32px;" id="submitPostcodeSearch">Search</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" id="uprnLookupArea">
+                <div class="card-header"><h2>UPRN Lookup</h2></div>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Enter a full uprn to search</h5>
+                    <div class="form-group" id="uprnSearchInputFormGroup">
+                        <label for="uprnSearchInput">Urpn</label>
+                        <input type="text" class="form-control" id="uprnSearchInput" placeholder="e.g. '100100904622'">
+                    </div>
+                    <div id="uprnPreferWelshCheckboxFormGroup">
+                        <input type="checkbox" id="uprnPreferWelshCheckbox" style="margin-top:10px;">
+                        <label class="form-check-label" for="uprnPreferWelshCheckbox">Prefer Welsh</label>
+                    </div>
+                    <br />
+                    <label>Address Type</label>
+                    <div id="uprnDtoRadioFormGroup">
+                        <input type="radio" name="uprnDtoType" value="full">
+                        <label>Full</label>
+                        <input type="radio" name="uprnDtoType" value="simple" checked>
+                        <label>Simple</label>
+                    </div>
+
+                    <div class="mt-auto">
+                        <a href="#" class="btn btn-primary" style="margin-top:32px;" id="submitUprnSearch">Search</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card" id="coordinateLookupArea">
+                <div class="card-header"><h2>Coordinate Lookup</h2></div>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Enter the radius, x and y coordinates to search</h5>
+                    <div class="form-group" id="coordinateSearchInputFormGroup">
+                        <label for="xCoordinateSearchInput">X Coordinate</label>
+                        <input type="text" class="form-control" id="xCoordinateSearchInput" placeholder="e.g. '281613.6'">
+                    </div>
+                    <div class="form-group">
+                        <label for="yCoordinateSearchInput">Y Coordinate</label>
+                        <input type="text" class="form-control" id="yCoordinateSearchInput" placeholder="e.g. '176914.4'">
+                    </div>
+                    <div class="form-group">
+                        <label for="radiusSearchInput">Radius</label>
+                        <input type="text" class="form-control" id="radiusSearchInput" placeholder="e.g. '5'">
+                    </div>
+                    <div id="coordinatesPreferWelshCheckboxFormGroup">
+                        <input type="checkbox" id="coordinatesPreferWelshCheckbox" style="margin-top:10px;">
+                        <label class="form-check-label" for="coordinatesPreferWelshCheckbox">Prefer Welsh</label>
+                    </div>
+                    <div class="mt-auto">
+                        <a href="#" class="btn btn-primary" style="margin-top:32px;" id="submitCoordinateSearch">Search</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .row-full {
+        width: 100vw;
+        position: relative;
+        margin-left: -50vw;
+        height: 100px;
+        margin-top: 20px;
+        left: 50%;
+    }
+</style>
+<div id="resultsListContainer" class="row-full"></div>
+<div id="noResultsListContainer" style="text-align:center"></div>
+
+    @section Scripts {
+
+        <script id="documentReady">
+            $(document).ready(function () {
+                // Enter keypress to submit from Free Text input
+                $("#freeTextSearchInput").keyup(function (event) {
+                    if (event.keyCode === 13) {
+                        $("#submitFreeTextSearch").click();
+                    }
+                });
+
+                // Enter keypress to submit from Postcode input
+                $("#postcodeSearchInput").keyup(function (event) {
+                    if (event.keyCode === 13) {
+                        $("#submitPostcodeSearch").click();
+                    }
+                });
+
+                // Enter keypress to submit from Postcode search text input
+                $("#postcodeSearchAdditionalTextInput").keyup(function (event) {
+                    if (event.keyCode === 13) {
+                        $("#submitPostcodeSearch").click();
+                    }
+                });
+
+                // Free text submit
+                $("#submitFreeTextSearch").on("click", function () {
+                    $("#resultsListContainer").html('');
+                    $("#noResultsListContainer").html('');
+
+                    var tableDiv;
+                    var searchString = $("#freeTextSearchInput").val();
+                    var preferWelsh = $("#freeTextPreferWelshCheckbox").is(":checked");
+                    var dtoType = $("input[name='freeTextDtoType']:checked").val();
+                    var url = "Home/FreeTextSearch/" + preferWelsh + "/" + dtoType + "?searchString=" + encodeURIComponent(searchString);
+
+                    // ajax
+                    $.ajax({
+                        type: "GET",
+                        url: url,
+                        contentType: "application/json",
+                        dataType: "json",
+                        success: function (data) {
+                            if (dtoType == "simple") {
+                                tableDiv = '<table id="resultsTable" class="table table-bordered table-hover">';
+                                tableDiv += renderSimpleTableHeader();
+                                $.each(data, function (index, value) {
+                                    tableDiv += renderSimpleTableRow(value);
+                                });
+                                tableDiv += '</table>';
+                            } else {
+                                $.each(data, function (index, value) {
+                                    tableDiv += renderFullTableRow(value);
+                                });
+                            }
+
+                            $("#resultsListContainer").html(tableDiv);
+                        },
+                        error: function (data) {
+                            if (data.status == 500) {
+                                var errorMessage = '<span class="badge badge-danger"><h5>' + data.responseText + '</h5></span>'
+                                $("#noResultsListContainer").html(errorMessage);
+                            } else {
+                                $("#noResultsListContainer").html('<span class="badge badge-light"><h4>Your query returned no results</h4></span>');
+                            }
+                        }
+                    });
+                });
+
+                // Postcode submit
+                $("#submitPostcodeSearch").on("click", function () {
+                   $("#resultsListContainer").html('');
+                   $("#noResultsListContainer").html('');
+
+                    var tableDiv = '<table id="resultsTable" class="table table-bordered table-hover">';
+                    var postcode = $("#postcodeSearchInput").val();
+                    var preferWelsh = $("#postcodePreferWelshCheckbox").is(":checked");
+                    var dtoType = $("input[name='postcodeDtoType']:checked").val();
+                    var url = "Home/PostcodeSearch/" + preferWelsh + "/" + dtoType + "?postcode=" + encodeURIComponent(postcode);
+
+                    // ajax
+                    $.ajax({
+                        type: "GET",
+                        url: url,
+                        contentType: "application/json",
+                        dataType: "json",
+                        success: function (data) {
+                            if (dtoType == "simple") {
+                                tableDiv += renderSimpleTableHeader();
+                                $.each(data, function (index, value) {
+                                    tableDiv += renderSimpleTableRow(value);
+                                });
+                            } else {
+                                $.each(data, function (index, value) {
+                                    tableDiv += renderFullTableRow(value);
+                                });
+                            }
+                            tableDiv += '</table>';
+                            $("#resultsListContainer").html(tableDiv);
+                        },
+                        error: function (data) {
+                            $("#noResultsListContainer").html('<span class="badge badge-light"><h4>Your query returned no results</h4></span>');
+                        }
+                    });
+                });
+
+                // Coordinates submit
+                $("#submitCoordinateSearch").on("click", function () {
+                    $("#resultsListContainer").html('');
+                    $("#noResultsListContainer").html('');
+
+                    var tableDiv = '<table id="resultsTable" class="table table-bordered table-hover">';
+                    var xCoordinate = $("#xCoordinateSearchInput").val();
+                    var yCoordinate = $("#yCoordinateSearchInput").val();
+                    var radius = $("#radiusSearchInput").val();
+                    var preferWelsh = $("#coordinatesPreferWelshCheckbox").is(":checked");
+
+                    var url = "Home/CoordinateSearch/" + xCoordinate + "/" + yCoordinate + "/" + preferWelsh;
+                    if (radius != null) {
+                        url += "/" + radius;
+                    }
+
+                    // ajax
+                    $.ajax({
+                        type: "GET",
+                        url: url,
+                        contentType: "application/json",
+                        dataType: "json",
+                        success: function (data) {
+                            tableDiv += renderSimpleTableHeader();
+                            $.each(data, function (index, value) {
+                                tableDiv += renderSimpleTableRow(value);
+                            });
+                            tableDiv += '</table>';
+                            $("#resultsListContainer").html(tableDiv);
+                        },
+                        error: function (data) {
+                            $("#noResultsListContainer").html('<span class="badge badge-light"><h4>Your query returned no results</h4></span>');
+                        }
+                    });
+                });
+
+                // Uprn submit
+                $("#submitUprnSearch").on("click", function () {
+                   $("#resultsListContainer").html('');
+                   $("#noResultsListContainer").html('');
+
+                    var tableDiv = '<table id="resultsTable" class="table table-bordered table-hover">';
+                    var uprn = $("#uprnSearchInput").val();
+                    var preferWelsh = $("#uprnPreferWelshCheckbox").is(":checked");
+                    var dtoType = $("input[name='uprnDtoType']:checked").val();
+                    var url = "Home/UprnSearch/" + uprn + "/" + preferWelsh + "/" + dtoType;
+
+                    // ajax
+                    $.ajax({
+                        type: "GET",
+                        url: url,
+                        contentType: "application/json",
+                        dataType: "json",
+                        success: function (data) {
+                            if (dtoType == "simple") {
+                                tableDiv += renderSimpleTableHeader();
+                                tableDiv += renderSimpleTableRow(data);
+                            } else {
+                                tableDiv += renderFullTableRow(data);
+                            }
+
+                            tableDiv += '</table>';
+                            $("#resultsListContainer").html(tableDiv);
+                        },
+                        error: function (data) {
+                            $("#noResultsListContainer").html('<span class="badge badge-light"><h4>Your query returned no results</h4></span>');
+                        }
+                    });
+                });
+            });
+        </script>
+
+        <script id="renderTable">
+            function renderSimpleTableHeader() {
+                return '<thead class="thead-dark"><tr><th>SingleLineAddress</th><th>AddressLine1</th><th>AddressLine2</th><th>AddressLine3</th><th>Town</th><th>Postcode</th><th>Uprn</th><th>Latitude</th><th>Longitude</th><th>x Coordinate</th><th>y coordinate</th></tr></thead>';
+            }
+
+            function renderSimpleTableRow(value) {
+                var singleLineAddress = value.singleLineAddress;
+                var address1 = value.addressLine1;
+                var address2 = value.addressLine2;
+                var address3 = value.addressLine3;
+                var town = value.town;
+                var postcode = value.postcode;
+                var uprn = value.uprn;
+                var latitude = value.latitude;
+                var longitude = value.longitude;
+                var xcoordinate = value.xCoordinateEasting;
+                var ycoordinate = value.yCoordinateNorthing;
+
+                var tableDiv = '<tr>';
+                tableDiv += '<td>' + singleLineAddress + '</td>';
+                if (jQuery.isEmptyObject(address1)) {
+                    tableDiv += '<td> </td>';
+                } else {
+                    tableDiv += '<td>' + address1 + '</td>';
+                }
+
+                if (jQuery.isEmptyObject(address2)) {
+                    tableDiv += '<td> </td>';
+                } else {
+                    tableDiv += '<td>' + address2 + '</td>';
+                }
+
+                if (jQuery.isEmptyObject(address3)) {
+                    tableDiv += '<td> </td>';
+                } else {
+                    tableDiv += '<td>' + address3 + '</td>';
+                }
+
+                tableDiv += '<td>' + town + '</td>';
+                tableDiv += '<td>' + postcode + '</td>';
+                tableDiv += '<td>' + uprn + '</td>';
+                tableDiv += '<td>' + latitude + '</td>';
+                tableDiv += '<td>' + longitude + '</td>';
+                tableDiv += '<td>' + xcoordinate + '</td>';
+                tableDiv += '<td>' + ycoordinate + '</td>';
+                tableDiv += '</tr>';
+
+                return tableDiv;
+            }
+
+            function renderFullTableRow(data) {
+                var singleLineAddress = data.singleLineAddress;
+                var address1 = data.addressLine1;
+                var address2 = data.addressLine2;
+                var address3 = data.addressLine3;
+                var town = data.postTown;
+                var postcode = data.postcode;
+                var uprn = data.uprn;
+                var latitude = data.latitude;
+                var longitude = data.longitude;
+                var xcoordinate = data.xCoordinateEasting;
+                var ycoordinate = data.yCoordinateNorthing;
+
+                var organisationname = data.organisationName;
+                var departmentname = data.departmentName;
+                var subbuildingname = data.subBuildingName;
+                var buildingname = data.buildingName;
+                var buildingnumber = data.buildingNumber;
+                var poboxnumber = data.poBoxNumber;
+                var dependentthoroughfare = data.dependentThoroughfare;
+                var thoroughfare = data.thoroughfare;
+                var doubledependentlocality = data.doubleDependentLocality;
+                var dependentlocality = data.dependentLocality;
+
+                var tableDiv = '<table id="resultsTable" class="table table-bordered table-hover"><tr>';
+                tableDiv += '<td class="table-dark" style="font-weight:bold">Single Line Address</td><td>' + singleLineAddress + '</td>';
+
+                tableDiv += '</tr>';
+                tableDiv += '<tr>';
+                tableDiv += '<td class="table-dark" style="font-weight:bold">Address1</td>';
+                if (jQuery.isEmptyObject(address1)) {
+                    tableDiv += '<td> </td>';
+                } else {
+                    tableDiv += '<td>' + address1 + '</td>';
+                }
+                tableDiv += '</tr>';
+                tableDiv += '<tr>';
+
+                tableDiv += '<td class="table-dark" style="font-weight:bold">Address2</td>';
+                if (jQuery.isEmptyObject(address2)) {
+                    tableDiv += '<td> </td>';
+                } else {
+                    tableDiv += '<td>' + address2 + '</td>';
+                }
+                tableDiv += '</tr>';
+                tableDiv += '<tr>';
+
+                tableDiv += '<td class="table-dark" style="font-weight:bold">Address3</td>';
+                if (jQuery.isEmptyObject(address3)) {
+                    tableDiv += '<td> </td>';
+                } else {
+                    tableDiv += '<td>' + address3 + '</td>';
+                }
+                tableDiv += '</tr>';
+                tableDiv += '<tr><td class="table-dark" style="font-weight:bold">Post Town</td><td>' + town + '</td></tr>';
+                tableDiv += '<tr><td class="table-dark" style="font-weight:bold">Post Code</td><td>' + postcode + '</td></tr>';
+                tableDiv += '<tr><td class="table-dark" style="font-weight:bold">Uprn</td><td>' + uprn + '</td></tr>';
+                tableDiv += '<tr><td class="table-dark" style="font-weight:bold">Latitude</td><td>' + latitude + '</td></tr>';
+                tableDiv += '<tr><td class="table-dark" style="font-weight:bold">Longitude</td><td>' + longitude + '</td></tr>';
+                tableDiv += '<tr><td class="table-dark" style="font-weight:bold">X Coordinate</td><td>' + xcoordinate + '</td></tr>';
+                tableDiv += '<tr><td class="table-dark" style="font-weight:bold">Y Coordinate</td><td>' + ycoordinate + '</td></tr>';
+
+                tableDiv += '<tr>';
+                tableDiv += '<td class="table-dark" style="font-weight:bold">Organisation</td>';
+                if (jQuery.isEmptyObject(organisationname)) {
+                    tableDiv += '<td> </td>';
+                } else {
+                    tableDiv += '<td>' + organisationname + '</td>';
+                }
+                tableDiv += '</tr>';
+                tableDiv += '<tr>';
+
+                tableDiv += '<td class="table-dark" style="font-weight:bold">Department</td>';
+                if (jQuery.isEmptyObject(departmentname)) {
+                    tableDiv += '<td> </td>';
+                } else {
+                    tableDiv += '<td>' + departmentname + '</td>';
+                }
+                tableDiv += '</tr>';
+                tableDiv += '<tr>';
+
+                tableDiv += '<td class="table-dark" style="font-weight:bold">Sub Building Name</td>';
+                if (jQuery.isEmptyObject(subbuildingname)) {
+                    tableDiv += '<td> </td>';
+                } else {
+                    tableDiv += '<td>' + subbuildingname + '</td>';
+                }
+                tableDiv += '</tr>';
+                tableDiv += '<tr>';
+
+                tableDiv += '<td class="table-dark" style="font-weight:bold">Building Name</td>';
+                if (jQuery.isEmptyObject(buildingname)) {
+                    tableDiv += '<td> </td>';
+                } else {
+                    tableDiv += '<td>' + buildingname + '</td>';
+                }
+                tableDiv += '</tr>';
+                tableDiv += '<tr>';
+
+                tableDiv += '<td class="table-dark" style="font-weight:bold">Sub Building Number</td>';
+                if (jQuery.isEmptyObject(buildingnumber)) {
+                    tableDiv += '<td> </td>';
+                } else {
+                    tableDiv += '<td>' + buildingnumber + '</td>';
+                }
+                tableDiv += '</tr>';
+                tableDiv += '<tr>';
+
+                tableDiv += '<td class="table-dark" style="font-weight:bold">PO Box Number</td>';
+                if (jQuery.isEmptyObject(poboxnumber)) {
+                    tableDiv += '<td> </td>';
+                } else {
+                    tableDiv += '<td>' + poboxnumber + '</td>';
+                }
+                tableDiv += '</tr>';
+                tableDiv += '<tr>';
+
+                tableDiv += '<td class="table-dark" style="font-weight:bold">Dependent Thoroughfare</td>';
+                if (jQuery.isEmptyObject(dependentthoroughfare)) {
+                    tableDiv += '<td> </td>';
+                } else {
+                    tableDiv += '<td>' + dependentthoroughfare + '</td>';
+                }
+                tableDiv += '</tr>';
+                tableDiv += '<tr>';
+
+                tableDiv += '<td class="table-dark" style="font-weight:bold">Thoroughfare</td>';
+                if (jQuery.isEmptyObject(thoroughfare)) {
+                    tableDiv += '<td> </td>';
+                } else {
+                    tableDiv += '<td>' + thoroughfare + '</td>';
+                }
+                tableDiv += '</tr>';
+                tableDiv += '<tr>';
+
+                tableDiv += '<td class="table-dark" style="font-weight:bold">Double Dependent Locality</td>';
+                if (jQuery.isEmptyObject(doubledependentlocality)) {
+                    tableDiv += '<td> </td>';
+                } else {
+                    tableDiv += '<td>' + doubledependentlocality + '</td>';
+                }
+                tableDiv += '</tr>';
+                tableDiv += '<tr>';
+
+                tableDiv += '<td class="table-dark" style="font-weight:bold">Dependent Locality</td>';
+                if (jQuery.isEmptyObject(dependentlocality)) {
+                    tableDiv += '<td> </td>';
+                } else {
+                    tableDiv += '<td>' + dependentlocality + '</td>';
+                }
+
+                tableDiv += '</tr></table>';
+                tableDiv += '<br>';
+
+                return tableDiv;
+            }
+        </script>
+    }

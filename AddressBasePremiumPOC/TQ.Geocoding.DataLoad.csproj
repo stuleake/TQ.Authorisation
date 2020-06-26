@@ -1,0 +1,58 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20190807111522_InitialCreate.cs" />
+    <Compile Remove="Migrations\20190807111522_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20190807125445_AddSearchableClasses.cs" />
+    <Compile Remove="Migrations\20190807125445_AddSearchableClasses.Designer.cs" />
+    <Compile Remove="Migrations\20190808101511_Fixdatatypes.cs" />
+    <Compile Remove="Migrations\20190808101511_Fixdatatypes.Designer.cs" />
+    <Compile Remove="Migrations\20190808114452_WhatsChanged.cs" />
+    <Compile Remove="Migrations\20190808114452_WhatsChanged.Designer.cs" />
+    <Compile Remove="Migrations\20190828114228_StagingAndStagingFilter.cs" />
+    <Compile Remove="Migrations\20190828114228_StagingAndStagingFilter.Designer.cs" />
+    <Compile Remove="Migrations\20190828114723_StagingStagingFilterClassication.cs" />
+    <Compile Remove="Migrations\20190828114723_StagingStagingFilterClassication.Designer.cs" />
+    <Compile Remove="Migrations\20190828115028_StagingStagingFilterClassication2.cs" />
+    <Compile Remove="Migrations\20190828115028_StagingStagingFilterClassication2.Designer.cs" />
+    <Compile Remove="Migrations\20190828131943_FixBLPUKey.cs" />
+    <Compile Remove="Migrations\20190828131943_FixBLPUKey.Designer.cs" />
+    <Compile Remove="Migrations\20190828134204_TryValueGeneratedNever.cs" />
+    <Compile Remove="Migrations\20190828134204_TryValueGeneratedNever.Designer.cs" />
+    <Compile Remove="Migrations\20190828134533_TryValueGeneratedNever2.cs" />
+    <Compile Remove="Migrations\20190828134533_TryValueGeneratedNever2.Designer.cs" />
+    <Compile Remove="Migrations\20190828135017_TryValueGeneratedNeverEF4.cs" />
+    <Compile Remove="Migrations\20190828135017_TryValueGeneratedNeverEF4.Designer.cs" />
+    <Compile Remove="Migrations\20190828141504_DropAllDependents.cs" />
+    <Compile Remove="Migrations\20190828141504_DropAllDependents.Designer.cs" />
+    <Compile Remove="Migrations\20190828141636_DropAll.cs" />
+    <Compile Remove="Migrations\20190828141636_DropAll.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="2.1.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Analyzers" Version="2.1.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.1.11">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Views\Home\DataLoad.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\Classes\" />
+  </ItemGroup>
+
+</Project>
