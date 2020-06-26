@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="ListTotree.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="5.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TQ.Authentication.ExternalServices\TQ.Authentication.ExternalServices.csproj" />
+    <ProjectReference Include="..\TQ.Authentication.Services.Interfaces\TQ.Authentication.Services.Interfaces.csproj" />
+  </ItemGroup>
+
+</Project>

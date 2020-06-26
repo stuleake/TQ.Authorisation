@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="GraphAPI\GraphApiCaller.cs" />
+    <Compile Remove="GraphAPI\IGraphApiCaller.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="5.1.2" />
+    <PackageReference Include="Microsoft.Graph" Version="3.0.1" />
+    <PackageReference Include="Microsoft.Graph.Auth" Version="1.0.0-preview.4" />
+    <PackageReference Include="Microsoft.Identity.Client" Version="4.10.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TQ.Authentication.Core\TQ.Authentication.Core.csproj" />
+  </ItemGroup>
+
+</Project>

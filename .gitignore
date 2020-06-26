@@ -338,3 +338,10 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+
+**/coverage.cobertura.xml
+
+appsettings.Development.json
+/.editorconfig
+/TQ.Authentication.AccessTokenProviderApp/appsettings.QA.json
+/TQ.Authentication.API/appsettings.QA.json

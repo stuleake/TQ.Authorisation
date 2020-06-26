@@ -1,0 +1,27 @@
+name: $(Build.DefinitionName).$(SourceBranchName).$(Date:yyyyMMdd).$(Rev:r)
+
+trigger:
+  - master
+  - develop
+
+pr:
+  - master
+  - feature/*
+  - develop
+
+resources:
+  repositories:
+    - repository: templates
+      type: git
+      name: TQ-Azure-DevOps/tq-azuredevops-common
+      ref: refs/heads/develop
+
+jobs:
+- template: Development\build-test-site.yml@templates
+  parameters:
+    vmImage: 'windows-2019'
+    buildConfiguration: 'Release'
+    solution: 'TQ.Authentication.sln'
+    projectFile: 'TQ.Authentication.API/TQ.Authentication.API.csproj'
+    testProjectFiles: 'TQ.Authentication.UnitTests/TQ.Authentication.UnitTests.csproj'
+    artifactName: 'TQ.Authentication.API'

@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TQ.Authentication.Core\TQ.Authentication.Core.csproj" />
+    <ProjectReference Include="..\TQ.Authentication.Data\TQ.Authentication.Data.csproj" />
+    <ProjectReference Include="..\TQ.Authentication.ExternalServices\TQ.Authentication.ExternalServices.csproj" />
+  </ItemGroup>
+
+</Project>
